@@ -1,15 +1,52 @@
+import { country } from "./data.js";
+
 const countries = ["United States", "Canada", "United Kingdom", "Mexico","Brazil", "Iran", "Spain",
   "Italy", "Germany","France", "Sweden", "China", "Japan", "Korea", "Singappore",
-]
+];
 
 const fruits = ["apple", "orange", "banana", "grape", "strawberry", "watermelon", "pineapple",
-  "melon", "pear", "peach", "mango", "avocado"
-]
+  "melon", "pear", "peach", "mango", "avocado",
+];
 
-const color =["red", "white", "black", "blue", "green", "purple", "pink", "yellow"]
+const color =["red", "white", "black", "blue", "green", "purple", "pink", "yellow", "grey",
+  "silver", "gold", "brown",
+];
 
-const hiddenWord = document.getElementById('word')
 
+//hidden word display
+const hiddenWord = document.getElementById('word');
+
+//button class
+const pickCountry = document.querySelector(".choiceCountry");
+const pickFruit = document.querySelector(".choiceFruit");
+const pickColor = document.querySelector(".choiceColor");
+//button letters a-z
+const pickLetter = document.querySelector(".letter");
+
+
+//when user picks a hidden word category
+pickCountry.addEventListener('click', (event) => {
+
+  let randomCountry = getRandom(countries)
+  console.log("country random", randomCountry)
+  hiddenWord.innerText = [randomCountry]
+});
+
+pickFruit.addEventListener('click', (event) => {
+  let randomFruit = getRandom(fruits)
+  console.log("fruit random", randomFruit)
+  hiddenWord.innerText = [randomFruit]
+});
+
+pickColor.addEventListener('click', (event) => {
+  let randomColor = getRandom(color)
+  console.log("fruit random", randomColor)
+  hiddenWord.innerText = [randomColor]
+});
+
+pickLetter.addEventListener('click', (event) => {
+
+})
 
 
 function getRandom(category) {
@@ -17,6 +54,8 @@ function getRandom(category) {
 }
 
 console.log(getRandom(fruits));
+
+
 
 
 
