@@ -1,3 +1,22 @@
+const countries = ["United States", "Canada", "United Kingdom", "Mexico","Brazil", "Iran", "Spain",
+  "Italy", "Germany","France", "Sweden", "China", "Japan", "Korea", "Singappore",
+]
+
+const fruits = ["apple", "orange", "banana", "grape", "strawberry", "watermelon", "pineapple",
+  "melon", "pear", "peach", "mango", "avocado"
+]
+
+const color =["red", "white", "black", "blue", "green", "purple", "pink", "yellow"]
+
+const hiddenWord = document.getElementById('word')
+
+
+
+function getRandom(category) {
+  return category[Math.floor(Math.random() * category.length)]
+}
+
+console.log(getRandom(fruits));
 
 
 
@@ -7,6 +26,8 @@
 
 
 // const button = document.querySelector(".button").addEventListener('click',display);
+// document.querySelector(.button).innerText
+
 
 //   button.style.display ='hide';
 // }
