@@ -12,13 +12,14 @@ const color =["red", "white", "black", "blue", "green", "purple", "pink", "yello
   "silver", "gold", "brown",
 ];
 
-const Underscore = []
-//
+const underscore = []
 const life = 3
+
+
 
 //hidden word display
 const hiddenWord = document.getElementById('word');
-const displayUnderscroe = document.getElementById('hidden');
+const displayUnderscore = document.getElementById('hidden');
 
 //button categories for the hidden word
 const pickCountry = document.querySelector(".choiceCountry");
@@ -30,20 +31,28 @@ const pickLetter = document.querySelectorAll(".letter");
 
 //when user picks a hidden word category
 pickCountry.addEventListener('click', (event) => {
-
   let randomCountry = getRandom(countries);
-  
   console.log("random country is:", randomCountry);
   hiddenWord.innerText = [randomCountry];
   console.log(randomCountry.length);
 
   for(let i =0; i< randomCountry.length; i++) {
-    Underscore.push("_");
+    if (randomCountry[i] === " ") {
+      underscore.push("space!")
+    }else{
+      underscore.push("_");
+    }
   }
-  displayUnderscroe.innerText = Underscore;
-  console.log(Underscore)
-  
+  console.log("test", underscore)
+  displayUnderscore.innerText = underscore.join(" ");
+  resetArray(underscore);
+  function resetArray(array) {
+    return array.length =[];
+  }
+  console.log(underscore);
 });
+
+
 
 pickFruit.addEventListener('click', (event) => {
   let randomFruit = getRandom(fruits);
@@ -74,8 +83,6 @@ function selectWord (randomWord) {
 function getRandom(category) {
   return category[Math.floor(Math.random() * category.length)]
 }
-
-
 
 
 
