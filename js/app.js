@@ -12,12 +12,13 @@ const color =["red", "white", "black", "blue", "green", "purple", "pink", "yello
   "silver", "gold", "brown",
 ];
 
+const Underscore = []
 //
 const life = 3
 
-
 //hidden word display
 const hiddenWord = document.getElementById('word');
+const displayUnderscroe = document.getElementById('hidden');
 
 //button categories for the hidden word
 const pickCountry = document.querySelector(".choiceCountry");
@@ -31,8 +32,17 @@ const pickLetter = document.querySelectorAll(".letter");
 pickCountry.addEventListener('click', (event) => {
 
   let randomCountry = getRandom(countries);
+  
   console.log("random country is:", randomCountry);
   hiddenWord.innerText = [randomCountry];
+  console.log(randomCountry.length);
+
+  for(let i =0; i< randomCountry.length; i++) {
+    Underscore.push("_");
+  }
+  displayUnderscroe.innerText = Underscore;
+  console.log(Underscore)
+  
 });
 
 pickFruit.addEventListener('click', (event) => {
@@ -47,12 +57,7 @@ pickColor.addEventListener('click', (event) => {
   hiddenWord.innerText = [randomColor];
 });
 
-// pickLetter.addEventListener('click', (event) => {
-//   pickLetter.forEach(button) => {
-
-//   }
-// })
-
+//when user clicks the keyboard
 pickLetter.forEach((button) => {
   button.addEventListener('click',(event) => {
     console.log(event.target.innerText);
@@ -60,11 +65,11 @@ pickLetter.forEach((button) => {
 })
 
 //displaying _ _ _ _
-// function selectWord (randomWord) {
-//   for (let i=0; i< randomWord.length; i++) {
-
-//   }
-// }
+function selectWord (randomWord) {
+  for (let i=0; i< randomWord.length; i++) {
+    randomWord
+  }
+}
 
 function getRandom(category) {
   return category[Math.floor(Math.random() * category.length)]
