@@ -12,48 +12,63 @@ const color =["red", "white", "black", "blue", "green", "purple", "pink", "yello
   "silver", "gold", "brown",
 ];
 
+//
+const life = 3
+
 
 //hidden word display
 const hiddenWord = document.getElementById('word');
 
-//button class
+//button categories for the hidden word
 const pickCountry = document.querySelector(".choiceCountry");
 const pickFruit = document.querySelector(".choiceFruit");
 const pickColor = document.querySelector(".choiceColor");
 //button letters a-z
-const pickLetter = document.querySelector(".letter");
+const pickLetter = document.querySelectorAll(".letter");
 
 
 //when user picks a hidden word category
 pickCountry.addEventListener('click', (event) => {
 
-  let randomCountry = getRandom(countries)
-  console.log("country random", randomCountry)
-  hiddenWord.innerText = [randomCountry]
+  let randomCountry = getRandom(countries);
+  console.log("random country is:", randomCountry);
+  hiddenWord.innerText = [randomCountry];
 });
 
 pickFruit.addEventListener('click', (event) => {
-  let randomFruit = getRandom(fruits)
-  console.log("fruit random", randomFruit)
-  hiddenWord.innerText = [randomFruit]
+  let randomFruit = getRandom(fruits);
+  console.log("random fruit is:", randomFruit);
+  hiddenWord.innerText = [randomFruit];
 });
 
 pickColor.addEventListener('click', (event) => {
-  let randomColor = getRandom(color)
-  console.log("fruit random", randomColor)
-  hiddenWord.innerText = [randomColor]
+  let randomColor = getRandom(color);
+  console.log("random color is:", randomColor);
+  hiddenWord.innerText = [randomColor];
 });
 
-pickLetter.addEventListener('click', (event) => {
+// pickLetter.addEventListener('click', (event) => {
+//   pickLetter.forEach(button) => {
 
+//   }
+// })
+
+pickLetter.forEach((button) => {
+  button.addEventListener('click',(event) => {
+    console.log(event.target.innerText);
+  } )
 })
 
+//displaying _ _ _ _
+// function selectWord (randomWord) {
+//   for (let i=0; i< randomWord.length; i++) {
+
+//   }
+// }
 
 function getRandom(category) {
   return category[Math.floor(Math.random() * category.length)]
 }
-
-console.log(getRandom(fruits));
 
 
 

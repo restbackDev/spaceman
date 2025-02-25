@@ -14,3 +14,9 @@ header {
 ul {
     flex-direction: column;
 }
+
+.keyboard {
+    /* display: flex;
+    justify-content: space-between; */
+    padding: 100;
+}
