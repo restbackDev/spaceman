@@ -13,7 +13,7 @@ const color =["red", "white", "black", "blue", "green", "purple", "pink", "yello
 ];
 
 const underscore = [];
-const life = 3;
+let lifeLeft = 3;
 let guessLetter;
 let splitWord;
 
@@ -32,6 +32,7 @@ const pickLetter = document.querySelectorAll(".letter");
 
 //when user picks a hidden word category
 pickCountry.addEventListener('click', (event) => {
+  resetArray(underscore);
   let randomCountry = getRandom(countries);
   console.log("random country is:", randomCountry);
   hiddenWord.innerText = [randomCountry];
@@ -45,9 +46,8 @@ pickCountry.addEventListener('click', (event) => {
     }
   }
   displayUnderscore.innerText = underscore.join(" "); //removes the ","
-  resetArray(underscore);
   console.log(underscore);
-  console.log("testing", hiddenWord.innerText)
+  console.log("testing inntertext in the browser:", hiddenWord.innerText)
 });
 
 
@@ -64,7 +64,7 @@ pickColor.addEventListener('click', (event) => {
 });
 
 //when user clicks the keyboard
-pickLetter.forEach((button) => {
+pickLetter.forEach((button) => { 
   button.addEventListener('click',(event) => {
     let displayLetter = event.target.innerText
     console.log(displayLetter);
@@ -76,21 +76,31 @@ pickLetter.forEach((button) => {
     splitWord = arrayWord.split("")
     console.log("length:", splitWord.length);
     console.log("array:", splitWord);
-    // compare(guessLetter,splitWord)
+
+    // compare(guessLetter,splitWord) //ex: "a" === {i,r,a,n}  
     for (let i=0; i <splitWord.length; i++) {
-      if (guessLetter.toLowerCase() == splitWord[i]) {
+      if (guessLetter.toLowerCase() === splitWord[i].toLowerCase()) {
         underscore[i] = guessLetter;
         console.log("compare",underscore)
+        displayUnderscore.innerText = underscore.join(" ")
+        console.log("check: ", underscore, "check answer: ", splitWord)
         
-        
+
+      //life removes
+      }else {
+        playerLife(lifeLeft);
+        console.log(lifeLeft)
       }
     }
   })
 })
 
+
+
 //generates random list in the array
 function getRandom(category) {
-  return category[Math.floor(Math.random() * category.length)]
+  return category[Math.floor(Math.random() * category.length)].toUpperCase();
+  //returns all random array of string into an UPPERCASE
 }
 
 //resets the array into empty
@@ -98,20 +108,19 @@ function resetArray(array) {
   return array.length =[];
 }
 
-// function compare (guessLetter,splitWord) {
-//   //letter comparison
-//   for (let i=0; i <splitWord.length; i++) {
-//     if (guessLetter == splitWord[i]) {
-//       underscore[i] = guessLetter;
-//       console.log("Test", underscore);
-//     }
-//   }
-// }
+//remove lives
+function playerLife (lifeLeft) {
+  lifeLeft --;
+  console.log("function: ");
+}
 
-
-
-
-
+function playerWon (hiddenAnswer, guessedAnswer) {
+  if (hiddenAnswer === guessedAnswer) {
+    console.log("You Won")
+  }else {
+    console.log("You Lost")
+  }
+}
 
 
 
@@ -144,9 +153,5 @@ function resetArray(array) {
 // wrap a keys 
 
 // functions activates to the event listener
-
-
-
-
   
 //     */
