@@ -14,12 +14,16 @@ const color =["red", "white", "black", "blue", "green", "purple", "pink", "yello
 
 const underscore = [];
 let lifeLeft = 3;
+
 let guessLetter;
 let splitWord;
 
 //hidden word display
 const hiddenWord = document.getElementById('word');
+//hidden word in underscore
 const displayUnderscore = document.getElementById('hidden');
+//players life display
+let displayPlayerLife = document.getElementById('life')
 
 //button categories for the hidden word
 const pickCountry = document.querySelector(".choiceCountry");
@@ -69,31 +73,34 @@ pickLetter.forEach((button) => {
     let displayLetter = event.target.innerText
     console.log(displayLetter);
     console.log("sample",hiddenWord.innerText)
-    guessLetter = event.target.innerText
+    guessLetter = event.target.innerText //guessLetter is a String via the text element
     
-    //make hiddenWord.innerText into an array
+    //make hiddenWord.innerText into an array using SplitWord
     let arrayWord = hiddenWord.innerText
     splitWord = arrayWord.split("")
     console.log("length:", splitWord.length);
     console.log("array:", splitWord);
-
-    // compare(guessLetter,splitWord) //ex: "a" === {i,r,a,n}  
-    for (let i=0; i <splitWord.length; i++) {
-      if (guessLetter.toLowerCase() === splitWord[i].toLowerCase()) {
-        underscore[i] = guessLetter;
-        console.log("compare",underscore)
-        displayUnderscore.innerText = underscore.join(" ")
-        console.log("check: ", underscore, "check answer: ", splitWord)
-        
-
-      //life removes
-      }else {
-        playerLife(lifeLeft);
-        console.log(lifeLeft)
-      }
-    }
+    checkLetter();
   })
 })
+
+function checkLetter() {
+  for (let i=0; i <splitWord.length; i++) {
+    if (guessLetter.toLowerCase() === splitWord[i].toLowerCase()) {
+      underscore[i] = guessLetter;
+      console.log("compare",underscore)
+      displayUnderscore.innerText = underscore.join(" ")
+      console.log("check underscore array : ", underscore, "check answer array: ", splitWord)
+    //life removes
+    } else if(!splitWord.includes(guessLetter)) {
+      lifeLeft -= 1;
+      displayPlayerLife.innerText = lifeLeft; //displays the cuurent life
+      console.log("lives", lifeLeft)
+   
+      return;
+    }
+  }
+}
 
 
 
@@ -114,7 +121,7 @@ function playerLife (lifeLeft) {
   console.log("function: ");
 }
 
-function playerWon (hiddenAnswer, guessedAnswer) {
+function playerStatus (hiddenAnswer, guessedAnswer) {
   if (hiddenAnswer === guessedAnswer) {
     console.log("You Won")
   }else {
