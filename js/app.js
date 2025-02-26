@@ -1,7 +1,7 @@
 import { country } from "./data.js";
 
 const countries = ["United States", "Canada", "United Kingdom", "Mexico","Brazil", "Iran", "Spain",
-  "Italy", "Germany","France", "Sweden", "China", "Japan", "Korea", "Singappore",
+  "Italy", "Germany","France", "Sweden", "China", "Japan", "Korea", "Singapore",
 ];
 
 const fruits = ["apple", "orange", "banana", "grape", "strawberry", "watermelon", "pineapple",
@@ -12,10 +12,10 @@ const color =["red", "white", "black", "blue", "green", "purple", "pink", "yello
   "silver", "gold", "brown",
 ];
 
-const underscore = []
-const life = 3
-
-
+const underscore = [];
+const life = 3;
+let guessLetter;
+let splitWord;
 
 //hidden word display
 const hiddenWord = document.getElementById('word');
@@ -25,6 +25,7 @@ const displayUnderscore = document.getElementById('hidden');
 const pickCountry = document.querySelector(".choiceCountry");
 const pickFruit = document.querySelector(".choiceFruit");
 const pickColor = document.querySelector(".choiceColor");
+
 //button letters a-z
 const pickLetter = document.querySelectorAll(".letter");
 
@@ -43,15 +44,11 @@ pickCountry.addEventListener('click', (event) => {
       underscore.push("_");
     }
   }
-  console.log("test", underscore)
-  displayUnderscore.innerText = underscore.join(" ");
+  displayUnderscore.innerText = underscore.join(" "); //removes the ","
   resetArray(underscore);
-  function resetArray(array) {
-    return array.length =[];
-  }
   console.log(underscore);
+  console.log("testing", hiddenWord.innerText)
 });
-
 
 
 pickFruit.addEventListener('click', (event) => {
@@ -69,20 +66,47 @@ pickColor.addEventListener('click', (event) => {
 //when user clicks the keyboard
 pickLetter.forEach((button) => {
   button.addEventListener('click',(event) => {
-    console.log(event.target.innerText);
-  } )
+    let displayLetter = event.target.innerText
+    console.log(displayLetter);
+    console.log("sample",hiddenWord.innerText)
+    guessLetter = event.target.innerText
+    
+    //make hiddenWord.innerText into an array
+    let arrayWord = hiddenWord.innerText
+    splitWord = arrayWord.split("")
+    console.log("length:", splitWord.length);
+    console.log("array:", splitWord);
+    // compare(guessLetter,splitWord)
+    for (let i=0; i <splitWord.length; i++) {
+      if (guessLetter.toLowerCase() == splitWord[i]) {
+        underscore[i] = guessLetter;
+        console.log("compare",underscore)
+        
+        
+      }
+    }
+  })
 })
 
-//displaying _ _ _ _
-function selectWord (randomWord) {
-  for (let i=0; i< randomWord.length; i++) {
-    randomWord
-  }
-}
-
+//generates random list in the array
 function getRandom(category) {
   return category[Math.floor(Math.random() * category.length)]
 }
+
+//resets the array into empty
+function resetArray(array) {
+  return array.length =[];
+}
+
+// function compare (guessLetter,splitWord) {
+//   //letter comparison
+//   for (let i=0; i <splitWord.length; i++) {
+//     if (guessLetter == splitWord[i]) {
+//       underscore[i] = guessLetter;
+//       console.log("Test", underscore);
+//     }
+//   }
+// }
 
 
 
