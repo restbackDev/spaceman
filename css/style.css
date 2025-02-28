@@ -53,10 +53,15 @@ body {
 
   header {
     text-align: center;
+    margin: 0;
   }
-  h1,h3,p {
+  h1, h2, h3,p {
     color: white;
   }
+
+h1,h3 {
+  margin: 0;
+}
 
   .main-container {
     margin: 0;
@@ -122,6 +127,21 @@ body {
   border-radius: 10rem;
   cursor: pointer;
 }
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #word {
   display: none;
 }
+
+#life {
+  font-size: 60px;
+  margin: 0;
+}
+
+
