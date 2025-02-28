@@ -121,7 +121,7 @@ h3 {
 }
 
 .modal-button button {
-  color: white;
+  color: var(--color-blue-munsell);
   font-family: inherit;
   font-weight: bold;
   font-size: 2.5rem;
@@ -140,6 +140,11 @@ h3 {
   align-items: center;
 }
 
+.letter {
+  font-size: 30px;
+  margin: 1px;
+}
+
 #word {
   display: none;
 }
@@ -148,3 +153,8 @@ h3 {
   font-size: 60px;
   margin: 0;
 }
+
+#playerGameStatus {
+  color: var(--color-charcoal);
+}
+

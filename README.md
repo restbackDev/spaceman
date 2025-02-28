@@ -75,3 +75,10 @@ We welcome contributions to improve the game! If you'd like to contribute, pleas
     git push origin feature/your-feature
     ```
 5. Submit a pull request with a description of your changes.
+
+
+## Future enchancements
+
+1. update buttons
+2. add animations
+3. display name
