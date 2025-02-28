@@ -23,7 +23,12 @@ const hiddenWord = document.getElementById('word');
 //hidden word in underscore
 const displayUnderscore = document.getElementById('hidden');
 //players life display
-let displayPlayerLife = document.getElementById('life')
+const displayPlayerLife = document.getElementById('life')
+//player status if the player won or lost the game
+const displayPlayerStatus = document.getElementById('playerGameStatus')
+//pop up-display platerStatus
+const modalContainer = document.getElementById('modal-container');
+
 
 //button categories for the hidden word
 const pickCountry = document.querySelector(".choiceCountry");
@@ -56,15 +61,30 @@ pickCountry.addEventListener('click', (event) => {
 
 
 pickFruit.addEventListener('click', (event) => {
+  resetArray(underscore);
   let randomFruit = getRandom(fruits);
   console.log("random fruit is:", randomFruit);
   hiddenWord.innerText = [randomFruit];
+  generateUnderscore(randomFruit);
+
+  displayUnderscore.innerText = underscore.join(" "); //removes the ","
+  console.log(underscore);
+  console.log("testing inntertext in the browser:", hiddenWord.innerText)
+
 });
 
 pickColor.addEventListener('click', (event) => {
+  resetArray(underscore);
   let randomColor = getRandom(color);
   console.log("random color is:", randomColor);
   hiddenWord.innerText = [randomColor];
+
+  generateUnderscore(randomColor);
+
+  displayUnderscore.innerText = underscore.join(" "); //removes the ","
+  console.log(underscore);
+  console.log("testing inntertext in the browser:", hiddenWord.innerText)
+
 });
 
 //when user clicks the keyboard
@@ -81,9 +101,41 @@ pickLetter.forEach((button) => {
     console.log("length:", splitWord.length);
     console.log("array:", splitWord);
     checkLetter();
+    playerStatus();
+    // playerWon()
+    console.log(`test underscore and splitword: ${underscore} and ${splitWord}`)
   })
 })
 
+function generateUnderscore (randomPick) {
+  for(let i =0; i< randomPick.length; i++) {
+    if (randomPick[i] === " ") {
+      underscore.push("space!")
+    }else{
+      underscore.push("_");
+    }
+  }
+}
+
+
+function playerStatus () {
+  let stringifyUnderscore = JSON.stringify(underscore);
+  let stringifySplitWord = JSON.stringify(splitWord);
+  
+  if (lifeLeft === 0) {
+    displayPlayerStatus.innerText = "You Lost";
+    console.log("player lost")
+    modalContainer.classList.add('show');
+  }else if (stringifyUnderscore === stringifySplitWord) {
+    displayPlayerStatus.innerText = "You Won";
+    modalContainer.classList.add('show');
+    console.log("You WINN")
+  }
+
+}
+
+
+//check the letter and removes life if guessed wrong
 function checkLetter() {
   for (let i=0; i <splitWord.length; i++) {
     if (guessLetter.toLowerCase() === splitWord[i].toLowerCase()) {
@@ -94,9 +146,8 @@ function checkLetter() {
     //life removes
     } else if(!splitWord.includes(guessLetter)) {
       lifeLeft -= 1;
-      displayPlayerLife.innerText = lifeLeft; //displays the cuurent life
+      displayPlayerLife.innerText = lifeLeft; //displays the current life in the browser
       console.log("lives", lifeLeft)
-   
       return;
     }
   }
@@ -107,58 +158,10 @@ function checkLetter() {
 //generates random list in the array
 function getRandom(category) {
   return category[Math.floor(Math.random() * category.length)].toUpperCase();
-  //returns all random array of string into an UPPERCASE
+  //returns all random array of string into an UPPERCASE letters
 }
 
 //resets the array into empty
 function resetArray(array) {
   return array.length =[];
 }
-
-//remove lives
-function playerLife (lifeLeft) {
-  lifeLeft --;
-  console.log("function: ");
-}
-
-function playerStatus (hiddenAnswer, guessedAnswer) {
-  if (hiddenAnswer === guessedAnswer) {
-    console.log("You Won")
-  }else {
-    console.log("You Lost")
-  }
-}
-
-
-
-// const button = document.querySelector(".button").addEventListener('click',display);
-// document.querySelector(.button).innerText
-
-
-//   button.style.display ='hide';
-// }
-// function display(event) {
-
-// /*
-
-// 1. add an event lisenter, to the their keyboard
-
-// 2. create a function to determine if the letter clicked or types matches
-//   if the letter picked matches with the hidden word
-//     the letter is displayed in a div of letters guessed
-//     the letter is displayed , games continues
-//   else if the letter does not match the hidden word,
-//     the letter is displayed in a div of letters guessed
-//     and the rocket will (1) will be removes 
-  
-//   if there are no more rockets left
-//     player lost
-
-  
-
-// COM display a message if they WON or LOSS
-// wrap a keys 
-
-// functions activates to the event listener
-  
-//     */

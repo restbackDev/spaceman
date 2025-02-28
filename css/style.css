@@ -1,22 +1,121 @@
+:root {
+    --color-prussian-blue: #152537;
+    --color-charcoal: #375160;
+    --color-davys-grey: #635E5E;
+    --color-oxford-blue: #152439;
+    --color-blue-green: #03a6a6;
+    --color-almost-black: #0d0d0d;
+    --color-blue-munsell: #3297B1;
+    --color-french-grey: #BFC4C9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #BFC4C9;
-    /* display: flex;
+    display: flex;
+    
     flex-direction: column;
     justify-content: center;
-    align-items: center; */
-}
-header {
-    background-color: rgb(108, 135, 233);
-}
+    align-items: center;
+
+    background-color: var(
+        --color-blue-munsell
+    );
+
+    background: radial-gradient(#0b0710,
+            var(--color-prussian-blue),
+            var(--color-french-grey)
+
+    );
 
 
-ul {
-    flex-direction: column;
+
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    height: 100vh;
 }
 
-.keyboard {
-    /* display: flex;
-    justify-content: space-between; */
-    padding: 100;
+@keyframes gradient {
+    0% {
+      background-position: 100% 100%;
+    }
+    50% {
+      background-position: 50% 50%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  h1,h3,p {
+    color: white;
+  }
+
+  .main-container {
+    margin: 0;
+    padding: 3rem;
+    border: 1rem;
+    display: grid;
+    grid-template-columns: 3.85fr 1.15fr;
+    grid-gap: 2rem;
+    height: 100%;
+  }
+
+  /* <pop up component> */
+.modal-container {
+  background-color: rgb(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  opacity: 0; /* will show the pop up */
+  pointer-events: none; /* so the button (answer) can be clicked while the (modal) is infront */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: opacity 0.3s ease;
+  font-family: 'Copperplate Gothic';
+  font-weight: bold;
+  z-index: 2;
+}
+
+.modal-container.show {
+  pointer-events: auto;
+  opacity: 1;
+  
+}
+
+.modal {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: .5rem;
+  padding: 3rem 5rem;
+  width: 50rem;
+  max-width: 100%;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.modal-button {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.modal-button button {
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 2.5rem;
+  height: 3.5rem;
+  border: 0.2rem solid white;
+  width: 90%;
+  margin: 0 1rem;
+  border-radius: 10rem;
+  cursor: pointer;
 }
