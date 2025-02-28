@@ -51,6 +51,9 @@ body {
     }
   }
 
+  header {
+    text-align: center;
+  }
   h1,h3,p {
     color: white;
   }

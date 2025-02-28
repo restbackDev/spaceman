@@ -63,46 +63,32 @@ pickCountry.addEventListener('click', (event) => {
 pickFruit.addEventListener('click', (event) => {
   resetArray(underscore);
   let randomFruit = getRandom(fruits);
-  console.log("random fruit is:", randomFruit);
   hiddenWord.innerText = [randomFruit];
   generateUnderscore(randomFruit);
-
   displayUnderscore.innerText = underscore.join(" "); //removes the ","
-  console.log(underscore);
-  console.log("testing inntertext in the browser:", hiddenWord.innerText)
+
 
 });
 
 pickColor.addEventListener('click', (event) => {
   resetArray(underscore);
   let randomColor = getRandom(color);
-  console.log("random color is:", randomColor);
   hiddenWord.innerText = [randomColor];
-
   generateUnderscore(randomColor);
-
   displayUnderscore.innerText = underscore.join(" "); //removes the ","
-  console.log(underscore);
-  console.log("testing inntertext in the browser:", hiddenWord.innerText)
-
 });
 
 //when user clicks the keyboard
 pickLetter.forEach((button) => { 
   button.addEventListener('click',(event) => {
     let displayLetter = event.target.innerText
-    console.log(displayLetter);
-    // console.log("sample",hiddenWord.innerText)
     guessLetter = event.target.innerText //guessLetter is a String via the text element
     
     //make hiddenWord.innerText into an array using SplitWord
     let arrayWord = hiddenWord.innerText
     splitWord = arrayWord.split("")
-    console.log("length:", splitWord.length);
-    console.log("array:", splitWord);
     checkLetter();
     playerStatus();
-    console.log(`test underscore and splitword: ${underscore} and ${splitWord}`)
   })
 })
 
@@ -123,12 +109,10 @@ function playerStatus () {
   
   if (lifeLeft === 0) {
     displayPlayerStatus.innerText = "You Lost";
-    console.log("player lost")
     modalContainer.classList.add('show');
   }else if (stringifyUnderscore === stringifySplitWord) {
     displayPlayerStatus.innerText = "You Won";
     modalContainer.classList.add('show');
-    console.log("You WINN")
   }
 
 }
@@ -139,14 +123,13 @@ function checkLetter() {
   for (let i=0; i <splitWord.length; i++) {
     if (guessLetter.toLowerCase() === splitWord[i].toLowerCase()) {
       underscore[i] = guessLetter;
-      console.log("compare",underscore)
       displayUnderscore.innerText = underscore.join(" ")
       console.log("check underscore array : ", underscore, "check answer array: ", splitWord)
-    //life removes
+    
+      //life removes
     } else if(!splitWord.includes(guessLetter)) {
       lifeLeft -= 1;
       displayPlayerLife.innerText = lifeLeft; //displays the current life in the browser
-      console.log("lives", lifeLeft)
       return;
     }
   }
