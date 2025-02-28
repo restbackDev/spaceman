@@ -92,7 +92,7 @@ pickLetter.forEach((button) => {
   button.addEventListener('click',(event) => {
     let displayLetter = event.target.innerText
     console.log(displayLetter);
-    console.log("sample",hiddenWord.innerText)
+    // console.log("sample",hiddenWord.innerText)
     guessLetter = event.target.innerText //guessLetter is a String via the text element
     
     //make hiddenWord.innerText into an array using SplitWord
@@ -102,7 +102,6 @@ pickLetter.forEach((button) => {
     console.log("array:", splitWord);
     checkLetter();
     playerStatus();
-    // playerWon()
     console.log(`test underscore and splitword: ${underscore} and ${splitWord}`)
   })
 })

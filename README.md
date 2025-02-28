@@ -1,5 +1,7 @@
 # Spaceman Game
 
+![Spaceman Game](images/screenshot.png)
+
 ## Overview
 Spaceman is an engaging "Guess the Word" game where players are challenged to guess a hidden word based on a selected category. The game operates similarly to Hangman, but with a fun twist. Players select a category and then try to guess the word by pressing buttons representing letters. Each wrong guess adds another part to the spaceman figure, and players must avoid completing the spaceman to win the game.
 
@@ -7,7 +9,7 @@ Spaceman is an engaging "Guess the Word" game where players are challenged to gu
 - **Category Selection**: Players can choose from different categories of words.
 - **Letter Buttons**: Players can guess the word by selecting letter buttons.
 - **Spaceman Figure**: The game uses a visual representation of a spaceman figure to track wrong guesses.
-- **Word Guessing**: Players must guess the word correctly before the spaceman is fully drawn.
+- **Word Guessing**: Players must guess the word correctly before the spaceman's live dies.
 - **Simple and Fun Gameplay**: Intuitive mechanics suitable for all ages.
 
 ## Game Flow
@@ -73,22 +75,3 @@ We welcome contributions to improve the game! If you'd like to contribute, pleas
     git push origin feature/your-feature
     ```
 5. Submit a pull request with a description of your changes.
-
-## Technologies Used
-- **JavaScript** (ES6+)
-- **HTML5** and **CSS3** for the game interface
-- **Node.js** (for local development and server)
-- **React** (optional, if the project uses React for UI, add this here)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- The inspiration for this game comes from the classic "Hangman" game.
-- Special thanks to the contributors who have improved the project.
-
-## Contact
-
-If you have any questions or suggestions, feel free to reach out to the project maintainers via the [Issues](https://github.com/restbackDev/spaceman/issues) page or contact us directly.
